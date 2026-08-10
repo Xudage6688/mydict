@@ -1,0 +1,46 @@
+mdictfe already running: http://localhost:3000
+
+Choose [Enter]=open browser / [r]=restart / [q]=quit :Old process stopped, starting again...
+
+> mdictfe@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.0 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://172.21.224.1:3000
+✓ Ready in 1170ms
+✓ Running next.config.ts took 85ms
+
+ GET / 200 in 636ms (next.js: 298ms, application-code: 338ms)
+ GET /?q=garlic 200 in 627ms (next.js: 320ms, application-code: 307ms)
+ GET /api/dicts 200 in 8.1s (next.js: 196ms, application-code: 7.9s)
+ GET /api/lookup?word=garlic 200 in 7.9s (next.js: 87ms, application-code: 7.8s)
+ GET /api/lookup?word=garlic 200 in 23ms (next.js: 10ms, application-code: 13ms)
+ GET /api/dicts 200 in 38ms (next.js: 27ms, application-code: 11ms)
+ GET /api/dicts 200 in 25ms (next.js: 12ms, application-code: 13ms)
+ GET /api/dicts 200 in 20ms (next.js: 7ms, application-code: 13ms)
+ GET /api/resource/8/concise-bing.css 200 in 785ms (next.js: 778ms, application-code: 7ms)
+ GET /api/dicts 200 in 20ms (next.js: 7ms, application-code: 13ms)
+ GET /?q=garlic 200 in 58ms (next.js: 7ms, application-code: 51ms)
+ GET /api/dicts 200 in 22ms (next.js: 6ms, application-code: 15ms)
+ GET /api/lookup?word=garlic 200 in 19ms (next.js: 8ms, application-code: 11ms)
+ GET /api/dicts 200 in 39ms (next.js: 27ms, application-code: 12ms)
+ GET /api/lookup?word=garlic 200 in 15ms (next.js: 6ms, application-code: 9ms)
+ GET / 200 in 50ms (next.js: 7ms, application-code: 43ms)
+ GET /api/dicts 200 in 9ms (next.js: 4ms, application-code: 4ms)
+ GET /api/dicts 200 in 8ms (next.js: 3ms, application-code: 6ms)
+ GET /api/lookup?word=apple 200 in 10ms (next.js: 3ms, application-code: 7ms)
+ GET /?q=apple 200 in 29ms (next.js: 3ms, application-code: 25ms)
+ GET /api/dicts 200 in 17ms (next.js: 5ms, application-code: 12ms)
+ GET /api/lookup?word=apple 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET /api/dicts 200 in 16ms (next.js: 12ms, application-code: 4ms)
+ GET /api/lookup?word=apple 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET /?q=apple 200 in 28ms (next.js: 3ms, application-code: 24ms)
+ GET /api/dicts 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET /api/lookup?word=apple 200 in 18ms (next.js: 13ms, application-code: 5ms)
+ GET /api/dicts 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ GET /api/lookup?word=apple 200 in 17ms (next.js: 8ms, application-code: 8ms)
+ GET / 200 in 48ms (next.js: 7ms, application-code: 41ms)
+ GET /api/dicts 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ GET /api/dicts 200 in 7ms (next.js: 2ms, application-code: 5ms)
+✓ Compiled in 2.6s

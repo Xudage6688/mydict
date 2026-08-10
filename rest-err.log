@@ -1,0 +1,2543 @@
+ERROR: Input redirection is not supported, exiting the process immediately.
+Turbopack build encountered 1 error:
+./src/app
+Error: Could not find the Next.js package (next/package.json)
+Resolved from: C:\Users\Daisy Liu\cv\myProjects\mdict\src\app
+Filesystem root used for resolution: C:\Users\Daisy Liu\cv\myProjects\mdict
+
+Possible causes:
+  - node_modules is being reorganized by a concurrent install (e.g. pnpm adding a package with a `next` peer dependency). This is transient and should clear once the install completes.
+  - node_modules/next was removed, renamed, or has a broken symlink.
+  - The workspace root is incorrect — see turbopack.root in the Next.js config docs for how to configure it.
+  - In a monorepo, the Next.js package may only exist in a directory above the closest directory containing a package manager lockfile. The workspace root is detected by locating the nearest package manager lockfile.
+  - Next.js is installed globally rather than as a project dependency. This is not supported; install it locally.
+
+Note: To ensure a hermetic build and a portable cache, files outside of the workspace root are not compiled.
+
+https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/app-router-types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../../shared/lib/segment'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../../route-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/invariant-error'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../../shared/lib/utils/reflect-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-access-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/dynamic-rendering'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/instant-validation/instant-samples'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/vary-params'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../app-render/work-unit-async-storage.external'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../create-deduped-by-callsite-server-error-logger'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../dynamic-rendering-utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve '../match-segments'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve '../web/spec-extension/adapters/reflect'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './cache'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './lru'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/client/components/segment-cache/scheduler.js
+Error: Module not found: Can't resolve './types'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./node_modules/next/dist/esm/server/request/search-params.js
+Error: Module not found: Can't resolve './utils'
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] ./src/app
+Error: Could not find the Next.js package (next/package.json)
+Resolved from: C:\Users\Daisy Liu\cv\myProjects\mdict\src\app
+Filesystem root used for resolution: C:\Users\Daisy Liu\cv\myProjects\mdict
+
+Possible causes:
+  - node_modules is being reorganized by a concurrent install (e.g. pnpm adding a package with a `next` peer dependency). This is transient and should clear once the install completes.
+  - node_modules/next was removed, renamed, or has a broken symlink.
+  - The workspace root is incorrect — see turbopack.root in the Next.js config docs for how to configure it.
+  - In a monorepo, the Next.js package may only exist in a directory above the closest directory containing a package manager lockfile. The workspace root is detected by locating the nearest package manager lockfile.
+  - Next.js is installed globally rather than as a project dependency. This is not supported; install it locally.
+
+Note: To ensure a hermetic build and a portable cache, files outside of the workspace root are not compiled.
+
+https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory 
+[browser] ./src/app
+Error: Could not find the Next.js package (next/package.json)
+Resolved from: C:\Users\Daisy Liu\cv\myProjects\mdict\src\app
+Filesystem root used for resolution: C:\Users\Daisy Liu\cv\myProjects\mdict
+
+Possible causes:
+  - node_modules is being reorganized by a concurrent install (e.g. pnpm adding a package with a `next` peer dependency). This is transient and should clear once the install completes.
+  - node_modules/next was removed, renamed, or has a broken symlink.
+  - The workspace root is incorrect — see turbopack.root in the Next.js config docs for how to configure it.
+  - In a monorepo, the Next.js package may only exist in a directory above the closest directory containing a package manager lockfile. The workspace root is detected by locating the nearest package manager lockfile.
+  - Next.js is installed globally rather than as a project dependency. This is not supported; install it locally.
+
+Note: To ensure a hermetic build and a portable cache, files outside of the workspace root are not compiled.
+
+https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory 
+[browser] ./src/app
+Error: Could not find the Next.js package (next/package.json)
+Resolved from: C:\Users\Daisy Liu\cv\myProjects\mdict\src\app
+Filesystem root used for resolution: C:\Users\Daisy Liu\cv\myProjects\mdict
+
+Possible causes:
+  - node_modules is being reorganized by a concurrent install (e.g. pnpm adding a package with a `next` peer dependency). This is transient and should clear once the install completes.
+  - node_modules/next was removed, renamed, or has a broken symlink.
+  - The workspace root is incorrect — see turbopack.root in the Next.js config docs for how to configure it.
+  - In a monorepo, the Next.js package may only exist in a directory above the closest directory containing a package manager lockfile. The workspace root is detected by locating the nearest package manager lockfile.
+  - Next.js is installed globally rather than as a project dependency. This is not supported; install it locally.
+
+Note: To ensure a hermetic build and a portable cache, files outside of the workspace root are not compiled.
+
+https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory 
+[browser] ./src/app
+Error: Could not find the Next.js package (next/package.json)
+Resolved from: C:\Users\Daisy Liu\cv\myProjects\mdict\src\app
+Filesystem root used for resolution: C:\Users\Daisy Liu\cv\myProjects\mdict
+
+Possible causes:
+  - node_modules is being reorganized by a concurrent install (e.g. pnpm adding a package with a `next` peer dependency). This is transient and should clear once the install completes.
+  - node_modules/next was removed, renamed, or has a broken symlink.
+  - The workspace root is incorrect — see turbopack.root in the Next.js config docs for how to configure it.
+  - In a monorepo, the Next.js package may only exist in a directory above the closest directory containing a package manager lockfile. The workspace root is detected by locating the nearest package manager lockfile.
+  - Next.js is installed globally rather than as a project dependency. This is not supported; install it locally.
+
+Note: To ensure a hermetic build and a portable cache, files outside of the workspace root are not compiled.
+
+https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory 
