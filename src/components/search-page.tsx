@@ -28,7 +28,7 @@ export default function SearchPage() {
   const [highlight, setHighlight] = useState(-1);
 
   const { history, record, remove } = useHistory();
-  const { results, loading, lookup, clear } = useLookup(record);
+  const { results, loading, lookup, clear, searched } = useLookup(record);
   const { suggestions, activeSug, setActiveSug, trigger, hide } =
     useSuggestions(sugDict);
   const { orderIdx, rows, nameOf, moveDict, reorder, moveToEdge } =
@@ -99,7 +99,12 @@ export default function SearchPage() {
     window.setTimeout(() => setHighlight(-1), 1600);
   };
 
-  const miss = results.length === 0 && query.trim().length > 0 && !loading;
+  // 未命中:仅当查询已提交(回车/联想/历史等触发 lookup)且输入仍等于该词时提示
+  const miss =
+    searched.length > 0 &&
+    searched === query.trim() &&
+    results.length === 0 &&
+    !loading;
 
   return (
     <div className="min-h-screen">
@@ -174,7 +179,7 @@ export default function SearchPage() {
                         <button
                           onClick={() => jumpTo(r.dictId)}
                           title={r.title}
-                          className="w-full truncate rounded px-2 py-1 text-left text-sm hover:bg-accent hover:text-accent-foreground"
+                          className="w-full truncate rounded px-2 py-1 text-left text-sm transition-colors hover:bg-accent hover:text-accent-foreground"
                         >
                           {r.title}
                         </button>

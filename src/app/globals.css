@@ -75,6 +75,19 @@
   max-width: 100%;
 }
 
+/* 右侧词典索引 jumpTo 高亮:ring 呼吸闪烁动画 */
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(59 130 246 / 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgb(59 130 246 / 0);
+  }
+}
+.highlight-pulse {
+  animation: highlight-pulse 0.9s ease-out 2;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

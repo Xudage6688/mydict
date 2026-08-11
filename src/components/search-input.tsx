@@ -2,6 +2,7 @@
 
 // 搜索输入框 + 联想下拉(键盘导航:Enter 查询、↑↓ 移动、Esc 关闭)。
 import { Input } from "@/components/ui/input";
+import { AnimatedContent } from "@/components/ui/animated-content";
 
 export default function SearchInput({
   query,
@@ -43,7 +44,12 @@ export default function SearchInput({
         className="h-12 bg-background text-lg"
       />
       {suggestions.length > 0 && (
-        <div className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md">
+        <AnimatedContent
+          distance={4}
+          duration={0.18}
+          ease="power2.out"
+          className="absolute z-10 mt-1 w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md"
+        >
           {suggestions.map((s, i) => (
             <button
               key={s}
@@ -58,7 +64,7 @@ export default function SearchInput({
               {s}
             </button>
           ))}
-        </div>
+        </AnimatedContent>
       )}
     </div>
   );

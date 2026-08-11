@@ -17,16 +17,39 @@ const BASE_CSS = `
 const AUDIO_RE = /\.(mp3|wav|ogg)$/i;
 // Speex 发音:浏览器原生不支持(仅 Firefox),需要解码成 WAV 播放
 const SPX_RE = /\.spx$/i;
-// 解码结果(blob URL)缓存,避免同一发音重复解码
+// 解码结果(blob URL)缓存,避免同一发音重复解码。
+// LRU 上限:超出后逐出最久未用的条目并 revoke 对应 blob URL,防止内存无界增长。
+const SPX_CACHE_MAX = 100;
 const spxBlobCache = new Map<string, string>();
+
+function spxCacheGet(url: string): string | undefined {
+  const blobUrl = spxBlobCache.get(url);
+  if (blobUrl !== undefined) {
+    // 命中即刷新为最近使用(Map 以插入序表示 LRU 序)
+    spxBlobCache.delete(url);
+    spxBlobCache.set(url, blobUrl);
+  }
+  return blobUrl;
+}
+
+function spxCacheSet(url: string, blobUrl: string): void {
+  spxBlobCache.delete(url);
+  spxBlobCache.set(url, blobUrl);
+  if (spxBlobCache.size > SPX_CACHE_MAX) {
+    const oldest = spxBlobCache.keys().next().value as string;
+    const evicted = spxBlobCache.get(oldest);
+    spxBlobCache.delete(oldest);
+    if (evicted) URL.revokeObjectURL(evicted);
+  }
+}
 
 async function playSpx(url: string) {
   try {
-    let blobUrl = spxBlobCache.get(url);
+    let blobUrl = spxCacheGet(url);
     if (!blobUrl) {
       const blob = await decodeSpeexToWav(url);
       blobUrl = URL.createObjectURL(blob);
-      spxBlobCache.set(url, blobUrl);
+      spxCacheSet(url, blobUrl);
     }
     const audio = new Audio(blobUrl);
     await audio.play();

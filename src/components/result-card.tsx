@@ -5,6 +5,7 @@
 import { memo, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import EntryView from "@/components/entry-view";
+import { AnimatedContent } from "@/components/ui/animated-content";
 import { LookupItem } from "@/lib/shared";
 
 function ResultCard({
@@ -21,8 +22,8 @@ function ResultCard({
   return (
     <section
       id={`result-${item.dictId}`}
-      className={`scroll-mt-20 rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow ${
-        highlight ? "ring-2 ring-blue-400" : ""
+      className={`scroll-mt-20 rounded-lg border bg-card text-card-foreground transition-shadow ${
+        highlight ? "ring-2 ring-blue-400 highlight-pulse" : ""
       }`}
     >
       <button
@@ -35,9 +36,14 @@ function ResultCard({
         />
       </button>
       {open && (
-        <div className="p-4">
+        <AnimatedContent
+          distance={6}
+          duration={0.22}
+          ease="power2.out"
+          className="p-4"
+        >
           <EntryView html={item.html ?? ""} onNavigate={onNavigate} />
-        </div>
+        </AnimatedContent>
       )}
     </section>
   );

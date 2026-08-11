@@ -3,6 +3,7 @@
 // 未命中提示 + 拼写近似(编辑距离 ≤ LEVENSHTEIN_MAX 的联想候选)。
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { AnimatedContent } from "@/components/ui/animated-content";
 import { fetchSuggest } from "@/lib/api";
 import { LEVENSHTEIN_MAX, SUGGEST_LIMIT_MISS } from "@/lib/shared";
 
@@ -51,7 +52,13 @@ export default function MissPanel({
   }, [word]);
 
   return (
-    <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+    <AnimatedContent
+      distance={10}
+      duration={0.3}
+      ease="power2.out"
+      delay={0.05}
+      className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"
+    >
       未找到 “{word}”。
       {hint && hint.length > 0 && (
         <>
@@ -70,6 +77,6 @@ export default function MissPanel({
           ))}
         </>
       )}
-    </div>
+    </AnimatedContent>
   );
 }
