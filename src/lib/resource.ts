@@ -113,7 +113,10 @@ export function resolveResource(
 // 复用已读字节,避免每次都整文件 readFileSync 阻塞事件循环。
 
 const DISK_CACHE_MAX = 256;
-const diskCache = new Map<string, { mtimeMs: number; buf: Buffer }>();
+const DISK_CACHE_MAX_BYTES = 32 * 1024 * 1024;
+type DiskCacheValue = { mtimeMs: number; buf: Buffer };
+const diskCache = new Map<string, DiskCacheValue>();
+let diskCacheBytes = 0;
 
 /**
  * 磁盘资源回退:在词典文件所在目录下寻找 path 对应的文件。
@@ -129,9 +132,22 @@ export function resolveDiskResource(dir: string, p: string): Buffer | null {
     const hit = diskCache.get(file);
     if (hit && hit.mtimeMs === st.mtimeMs) return hit.buf;
     const buf = fs.readFileSync(file);
-    diskCache.set(file, { mtimeMs: st.mtimeMs, buf });
-    if (diskCache.size > DISK_CACHE_MAX) {
-      diskCache.delete(diskCache.keys().next().value as string);
+    if (buf.length <= DISK_CACHE_MAX_BYTES) {
+      const prev = diskCache.get(file);
+      if (prev) diskCacheBytes -= prev.buf.length;
+      diskCache.set(file, { mtimeMs: st.mtimeMs, buf });
+      diskCacheBytes += buf.length;
+      while (
+        (diskCache.size > DISK_CACHE_MAX || diskCacheBytes > DISK_CACHE_MAX_BYTES) &&
+        diskCache.size > 1
+      ) {
+        const [k, v] = diskCache.entries().next().value as [
+          string,
+          DiskCacheValue,
+        ];
+        diskCache.delete(k);
+        diskCacheBytes -= v.buf.length;
+      }
     }
     return buf;
   } catch {

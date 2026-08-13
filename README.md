@@ -2,7 +2,8 @@
 
 基于 Next.js(App Router + TypeScript + Tailwind)的 MDX/MDD 词典查询应用。
 后端在 Next.js 进程内通过 [koffi](https://koffi.dev) 调用 **mdictcc** 引擎共享库
-(`mdict.dll` / `libmdict.so`),词典句柄进程内常驻,查询亚毫秒级。
+(`mdict.dll` / `libmdict.so`),词典句柄按 LRU 缓存、淘汰即关闭引擎释放 mmap,
+查询亚毫秒级;启动仅预载小词典(≤20MB),大词典按需惰性打开。
 
 ## 功能
 
@@ -13,6 +14,8 @@
 - 拼写近似:查无此词时给出编辑距离 ≤3 的建议
 - 词典管理:弹窗列出全部词典(递归扫描目录),点击切换当前词典
 - 历史与收藏:localStorage 持久化,点击即查
+- 内存管理:词典句柄 LRU 上限自动 `close` 引擎;词条/资源/Disk 缓存均有字节上限;
+  `POST /api/dicts/gc`(需 `MDICT_GC_TOKEN` 鉴权)可手动关闭全部句柄并触发 V8 GC
 - 容错:词典打开失败(加密/损坏/不支持)不影响其他词典,列表标记原因
 
 ## 环境要求
@@ -51,10 +54,10 @@ MDICT_FILTER=LDOCE6,CC-CEDICT,BBI
 
 ```
 浏览器
-  │  /api/dicts /api/lookup /api/resource /api/suggest
+  │  /api/dicts /api/lookup /api/resource /api/suggest /api/dicts/gc
   ▼
 Next.js Route Handlers(src/app/api/*)
-  │  koffi FFI
+  │  koffi FFI(函数绑定进程级单例)
   ▼
 mdictcc 引擎(mdict.dll / libmdict.so)
   │
@@ -62,14 +65,18 @@ mdictcc 引擎(mdict.dll / libmdict.so)
 词典文件(.mdx/.mdd,只读)
 ```
 
-- `src/lib/mdict.ts`  — koffi 绑定层(句柄封装、二进制安全 lookup、前缀联想)
-- `src/lib/dicts.ts`  — 词典管理器:递归扫描、惰性 open、进程内常驻(globalThis 单例)
+- `src/lib/mdict.ts`  — koffi 绑定层(单例化函数绑定、句柄封装、二进制安全 lookup、前缀联想)
+- `src/lib/dicts.ts`  — 词典管理器:递归扫描、惰性 open、句柄 LRU 淘汰(globalThis 单例)
 - `src/lib/html.ts`   — 词条 HTML 消毒 + 资源引用改写(路径型 /api/resource)
 - `src/lib/resource.ts` — MDD 资源 key 候选解析(共享给两个 resource 路由)
 - `src/components/search-page.tsx` — 搜索页(联想/结果/弹窗/历史)
 
 设计要点:词典列表请求不阻塞(纯扫描),查询某词典时才 open 并缓存;
 MDD 资源 key 前缀写法因生成器而异(`\`/`/`/裸名),`/api/resource` 按候选序列兼容。
+
+句柄内存上限 24 本,超出(需启用的词典 >24 本)才淘汰最久未用并 `close` 引擎(释放 mmap),
+再次查询惰性重开;词条缓存上限 50MB(按 UTF-8 字节)、MDD 缓存 64MB、磁盘资源缓存 32MB,
+均按字节淘汰最旧。启动预热仅 open ≤20MB 的词典,大词典(如 LDOCE6 的 1.3GB MDD)查询时才加载。
 
 资源 URL 采用**路径型** `/api/resource/<dictId>/<path>`(而非 `?dict=&path=`):
 CSS 内部的相对 `url()` 以 CSS 文件自身的 URL 为基准解析,路径型让该基准
@@ -80,6 +87,26 @@ CSS 内部的相对 `url()` 以 CSS 文件自身的 URL 为基准解析,路径�
 (部分词典资源直接外置,如 `简明必应版-css/concise-bing.css`、
 `英汉百科知识辞典/英汉百科知识辞典.jpg`);磁盘查找拒绝 `..` 路径穿越。
 无同名 MDD 的词典以自身 id 作为资源入口。
+
+## 部署与内存
+
+生产建议 `next build` 后用 `next start` 启动,并启用手动 GC 与堆上限:
+
+```bash
+NODE_OPTIONS="--max-old-space-size=2048 --expose-gc" npm run start
+```
+
+- `--expose-gc` 是 `POST /api/dicts/gc` 必需的(否则该端点仅关句柄、跳过硬 GC)
+- `--max-old-space-size` 把 V8 堆封顶,避免长期运行无限膨胀
+- GC 端点**默认禁用**:设置环境变量 `MDICT_GC_TOKEN` 后,请求须带
+  `x-gc-token: <token>` 头(shell 下:`curl -X POST -H "x-gc-token: <token>" \
+  http://localhost:3000/api/dicts/gc`);未配置 token 一律返回 403。
+  它关闭全部词典句柄并触发 GC,句柄随后按需惰性重开,属自愈操作
+- 可配定时任务每 6 小时调用一次,顺带记录 `process.memoryUsage()` 观察趋势
+
+实测(12 本词典,含 1.3GB LDOCE6,冷启动进程):全量打开后工作集约 134MB,
+GC 后约 96MB。此为冷启动数字,与旧版长跑 20h 后观测到的 1.36GB 基线的差异
+正来自本节的句柄按需加载 + 缓存字节上限(内存增长已被封顶)。
 
 ## 已知限制
 

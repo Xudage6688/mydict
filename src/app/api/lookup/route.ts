@@ -7,9 +7,11 @@ export const dynamic = "force-dynamic";
 
 // 词条处理结果缓存(进程级):dictId:word → { html, mddId }。
 // 词条内容与资源改写结果静态,二次查询命中时跳过引擎查询与消毒/改写。
-// 模块级 Map,dev 热重载会重置(可接受);上限 2000 条,插入序删最旧。
-const entryCache = new Map<string, { html: string; mddId: number }>();
-const ENTRY_CACHE_MAX = 2000;
+// 模块级 Map,dev 热重载会重置(可接受);按字节上限(50MB)淘汰最旧。
+type EntryCacheValue = { html: string; mddId: number; bytes: number };
+const entryCache = new Map<string, EntryCacheValue>();
+const ENTRY_CACHE_MAX_BYTES = 50 * 1024 * 1024;
+let entryCacheBytes = 0;
 
 // 查词:?word=<词>[&dict=<id>]
 // 不带 dict 时一次查询全部 MDX 词典,结果按词典分组;带 dict 仅查指定词典。
@@ -44,9 +46,20 @@ export async function GET(req: NextRequest) {
     // 资源入口:同名 MDD 优先;无 MDD 时用词典自身(资源路由会回退磁盘文件)
     const resourceId = mddId >= 0 ? mddId : id;
     const html = rewriteResources(sanitizeHtml(raw), resourceId);
-    entryCache.set(cacheKey, { html, mddId });
-    if (entryCache.size > ENTRY_CACHE_MAX) {
-      entryCache.delete(entryCache.keys().next().value as string);
+    const bytes = Buffer.byteLength(html, "utf8");
+    if (bytes <= ENTRY_CACHE_MAX_BYTES) {
+      const prev = entryCache.get(cacheKey);
+      if (prev) entryCacheBytes -= prev.bytes;
+      entryCache.set(cacheKey, { html, mddId, bytes });
+      entryCacheBytes += bytes;
+      while (entryCacheBytes > ENTRY_CACHE_MAX_BYTES && entryCache.size > 1) {
+        const [k, v] = entryCache.entries().next().value as [
+          string,
+          EntryCacheValue,
+        ];
+        entryCache.delete(k);
+        entryCacheBytes -= v.bytes;
+      }
     }
     results.push({ dictId: id, title, titleHtml: htmlTitle, found: true, html, mddId });
   }

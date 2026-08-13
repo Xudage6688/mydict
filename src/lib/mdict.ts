@@ -56,10 +56,28 @@ function takeCString(ptr: unknown): string {
 }
 
 interface MdictFuncs {
+  open: (path: string, errbuf: Buffer, errlen: number) => bigint;
   info: (h: bigint) => unknown;
   lookupBuf: (h: bigint, word: string, outLen: (number | null)[]) => unknown;
   suggest: (h: bigint, prefix: string, limit: number) => unknown;
   close: (h: bigint) => void;
+}
+
+// koffi 函数绑定只创建一次(进程级单例),避免每个词典实例重复
+// lib.func() 累计产生 native 包装器,无法被 V8 有效回收。
+let _funcs: MdictFuncs | null = null;
+
+function getOnceFuncs(lib: Lib): MdictFuncs {
+  if (_funcs) return _funcs;
+  return (_funcs = {
+    open: lib.func("void* mdict_open(const char* path, char* errbuf, size_t errlen)"),
+    info: lib.func("void* mdict_info(void*)"),
+    lookupBuf: lib.func(
+      "void* mdict_lookup_buf(void*, const char*, _Out_ size_t*)",
+    ),
+    suggest: lib.func("void* mdict_suggest(void*, const char*, int)"),
+    close: lib.func("void mdict_close(void*)"),
+  });
 }
 
 export class MdictDict {
@@ -67,29 +85,19 @@ export class MdictDict {
   private readonly fn: MdictFuncs;
   private _info: DictInfo | null = null;
 
-  constructor(lib: Lib, handle: bigint) {
+  constructor(handle: bigint) {
     this.handle = handle;
-    this.fn = {
-      info: lib.func("void* mdict_info(void*)"),
-      lookupBuf: lib.func(
-        "void* mdict_lookup_buf(void*, const char*, _Out_ size_t*)",
-      ),
-      suggest: lib.func("void* mdict_suggest(void*, const char*, int)"),
-      close: lib.func("void mdict_close(void*)"),
-    };
+    this.fn = getOnceFuncs(getLib());
   }
 
   static open(lib: Lib, filePath: string): MdictDict {
-    const open = lib.func(
-      "void* mdict_open(const char* path, char* errbuf, size_t errlen)",
-    );
     const errbuf = Buffer.alloc(512);
-    const h = open(filePath, errbuf, 512);
+    const h = getOnceFuncs(lib).open(filePath, errbuf, 512);
     if (!h) {
       const msg = koffi.decode(errbuf, "char", -1) || "unknown error";
       throw new Error(`打开词典失败(${path.basename(filePath)}): ${msg}`);
     }
-    return new MdictDict(lib, h);
+    return new MdictDict(h);
   }
 
   info(): DictInfo {
