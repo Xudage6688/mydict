@@ -61,9 +61,13 @@ async function playSpx(url: string) {
 
 export default function EntryView({
   html,
+  userCss = "",
   onNavigate,
 }: {
   html: string;
+  // 用户自定义样式:注入 shadow root 内、词典自带 CSS 之后,
+  // 同特异性下覆盖自带样式;shadow 隔离保证只作用于本词典词条。
+  userCss?: string;
   onNavigate: (word: string) => void;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -89,6 +93,13 @@ export default function EntryView({
     const body = document.createElement("div");
     body.innerHTML = html;
     shadow.append(body);
+    // 用户自定义 CSS:追加在 BASE_CSS 之后(先于词典自带 <link> 样式插入
+    // shadow 的顺序无妨——用户样式最后声明,同特异性覆盖)。
+    if (userCss.trim()) {
+      const userStyle = document.createElement("style");
+      userStyle.textContent = userCss;
+      shadow.append(userStyle);
+    }
 
     // 事件监听必须挂在 shadow 内部(body 上),而不是 host 上:
     // 事件越过 shadow boundary 后会被 retarget,host 上的监听器看到
@@ -113,7 +124,7 @@ export default function EntryView({
       }
     };
     body.addEventListener("click", onClick);
-  }, [html]);
+  }, [html, userCss]);
 
   return <div ref={hostRef} className="entry" />;
 }

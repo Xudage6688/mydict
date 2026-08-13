@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { List } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchDicts } from "@/lib/api";
-import { DictEntry, MDX_EXT_RE } from "@/lib/shared";
+import { DictEntry } from "@/lib/shared";
 import {
   useDictOrder,
   useHistory,
@@ -22,26 +22,21 @@ import HistoryChips from "@/components/history-chips";
 
 export default function SearchPage() {
   const [dicts, setDicts] = useState<DictEntry[]>([]);
-  const [sugDict, setSugDict] = useState<number>(-1); // 联想用词典(首个可用 MDX)
   const [query, setQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [highlight, setHighlight] = useState(-1);
 
   const { history, record, remove } = useHistory();
-  const { results, loading, lookup, clear, searched } = useLookup(record);
+  const { results, loading, lookup, clear, lastWord } = useLookup(record);
   const { suggestions, activeSug, setActiveSug, trigger, hide } =
-    useSuggestions(sugDict);
+    useSuggestions();
   const { orderIdx, rows, nameOf, moveDict, reorder, moveToEdge } =
     useDictOrder(dicts);
 
-  // 词典列表 + 联想词典选择
+  // 词典列表加载
   useEffect(() => {
     fetchDicts()
-      .then((j) => {
-        setDicts(j.dicts);
-        const first = j.dicts.find((d) => MDX_EXT_RE.test(d.name));
-        if (first) setSugDict(first.id);
-      })
+      .then((j) => setDicts(j.dicts))
       .catch(() => setDicts([]));
   }, []);
 
@@ -99,17 +94,19 @@ export default function SearchPage() {
     window.setTimeout(() => setHighlight(-1), 1600);
   };
 
-  // 未命中:仅当查询已提交(回车/联想/历史等触发 lookup)且输入仍等于该词时提示
+  // 未命中提示:仅当"输入框内容等于最近一次实际查询的词"且确实无结果时显示。
+  // 输入过程中(还没按回车)query 会先于 lastWord 变化,不显示,避免"未搜索就提示不存在"。
   const miss =
-    searched.length > 0 &&
-    searched === query.trim() &&
     results.length === 0 &&
-    !loading;
+    query.trim().length > 0 &&
+    !loading &&
+    lastWord.trim().length > 0 &&
+    lastWord.trim() === query.trim();
 
   return (
     <div className="min-h-screen">
       {/* 全页 sticky header:搜索框常驻顶部 */}
-      <header className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b bg-background/95 shadow-sm backdrop-blur">
         <div className="mx-auto w-full max-w-5xl px-4 py-2">
           <SearchInput
             query={query}
@@ -156,7 +153,7 @@ export default function SearchPage() {
 
           {results.length > 0 && (
             <aside className="sticky top-20 hidden w-52 shrink-0 lg:block">
-              <div className="flex max-h-[calc(100vh-6rem)] flex-col rounded-lg border bg-card p-3">
+              <div className="flex max-h-[calc(100vh-6rem)] flex-col rounded-lg border bg-card p-3 shadow-sm transition-shadow">
                 <div className="mb-2 flex items-center justify-between">
                   <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                     命中词典
@@ -179,9 +176,9 @@ export default function SearchPage() {
                         <button
                           onClick={() => jumpTo(r.dictId)}
                           title={r.title}
-                          className="w-full truncate rounded px-2 py-1 text-left text-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+                          className="w-full truncate rounded px-2 py-1 text-left text-sm hover:bg-accent hover:text-accent-foreground"
                         >
-                          {r.title}
+                          <span dangerouslySetInnerHTML={{ __html: r.titleHtml }} />
                         </button>
                       </li>
                     ))}

@@ -1,6 +1,10 @@
 // 共享类型、显示名与常量 —— 纯类型/纯函数,不依赖任何 Node 模块,
 // 服务端(route/lib)与客户端(components)共用,避免各处重复定义。
 
+// 词条 HTML 轻量消毒(移除 script 与事件属性)。从 html.ts 复用避免重复,
+// 该函数本身无 Node 依赖,仅字符串处理。
+import { sanitizeHtml } from "./html";
+
 // ---- 类型 ----
 
 export interface DictInfo {
@@ -27,6 +31,7 @@ export interface DictEntry {
 export interface LookupItem {
   dictId: number;
   title: string;
+  titleHtml: string; // 安全 HTML 版标题(供 dangerouslySetInnerHTML;title 可能含词典自带富文本标签)
   found: boolean;
   html?: string;
   mddId?: number;
@@ -58,4 +63,25 @@ export function dictDisplayName(title: string, name: string): string {
   const t = title.trim();
   if (t && !PLACEHOLDER_TITLE_RE.test(t)) return t;
   return name.replace(DICT_EXT_RE, "");
+}
+
+/** HTML 转义(纯文本 -> 安全 HTML 文本)。 */
+export function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/**
+ * 词典标题的安全 HTML(供 dangerouslySetInnerHTML 渲染):
+ * - title 有效(可能是词典自带的富文本,含 <span>/<font> 等样式标签)→ 消毒后原样
+ * - 占位/空标题回退文件名 → 按纯文本转义(文件名不是 HTML)
+ */
+export function titleHtml(title: string, name: string): string {
+  const t = title.trim();
+  if (t && !PLACEHOLDER_TITLE_RE.test(t)) return sanitizeHtml(t);
+  return escapeHtml(name.replace(DICT_EXT_RE, ""));
 }

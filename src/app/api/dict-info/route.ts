@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
-import { dictDisplayName, MDX_EXT_RE } from "@/lib/shared";
+import { dictDisplayName, titleHtml, MDX_EXT_RE } from "@/lib/shared";
 import { getManager } from "@/lib/dicts";
 
 export const dynamic = "force-dynamic";
@@ -33,6 +33,7 @@ export async function GET(req: NextRequest) {
     path: entry.path,
     info: d.info(),
     title: dictDisplayName(d.info().title ?? "", entry.name),
+    titleHtml: titleHtml(d.info().title ?? "", entry.name),
     cover: findCover(entry.path),
   });
 }

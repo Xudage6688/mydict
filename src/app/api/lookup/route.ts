@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { dictDisplayName, MDX_EXT_RE, LookupItem } from "@/lib/shared";
+import { dictDisplayName, titleHtml, MDX_EXT_RE, LookupItem } from "@/lib/shared";
 import { getManager } from "@/lib/dicts";
 import { rewriteResources, sanitizeHtml } from "@/lib/html";
 
@@ -31,10 +31,11 @@ export async function GET(req: NextRequest) {
     if (!d || d.info().is_mdd) continue; // open 失败或资源库,跳过
     const entry = mgr.entry(id);
     const title = dictDisplayName(d.info().title ?? "", entry?.name ?? "");
+    const htmlTitle = titleHtml(d.info().title ?? "", entry?.name ?? "");
     const cacheKey = `${id}:${word}`;
     const cached = entryCache.get(cacheKey);
     if (cached) {
-      results.push({ dictId: id, title, found: true, html: cached.html, mddId: cached.mddId });
+      results.push({ dictId: id, title, titleHtml: htmlTitle, found: true, html: cached.html, mddId: cached.mddId });
       continue;
     }
     const raw = d.lookup(word);
@@ -47,7 +48,7 @@ export async function GET(req: NextRequest) {
     if (entryCache.size > ENTRY_CACHE_MAX) {
       entryCache.delete(entryCache.keys().next().value as string);
     }
-    results.push({ dictId: id, title, found: true, html, mddId });
+    results.push({ dictId: id, title, titleHtml: htmlTitle, found: true, html, mddId });
   }
   return Response.json({ query: word, results });
 }

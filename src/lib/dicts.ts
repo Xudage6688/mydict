@@ -1,13 +1,14 @@
-// 词典管理器:扫描词典目录、按需 open(惰性,首次查询才加载)、进程内常驻。
+// 词典管理器:扫描词典目录、启动即全量加载、进程内常驻。
 //
-// 设计:扫描(纯文件系统,秒回)与 open(读索引,大词典可达秒级)分离,
-// 词典列表请求不阻塞;查询某本词典时才 open 并缓存结果。
+// 设计:服务进程启动时(instrumentation 触发 getManager)立即扫描词典目录,
+// 并在后台分批 open 全部词典(.mdx/.mdd),让后续查询直接命中句柄缓存、秒回。
+// open 为同步 C 调用,分批(间隔 10ms)温和执行,不阻塞启动与列表请求;
+// 某本失败静默记入 entry.error,不影响其他词典。
 import fs from "node:fs";
 import path from "node:path";
 import {
   DICT_EXT_RE,
   DictEntry,
-  dictDisplayName,
   MDX_EXT_RE,
   MDD_EXT_RE,
 } from "./shared";
@@ -23,9 +24,6 @@ const FILTER_TERMS: string[] = (process.env.MDICT_FILTER ?? "")
   .split(",")
   .map((t) => t.trim().toLowerCase())
   .filter(Boolean);
-
-/** 后台预热跳过超过该大小的词典文件(内存与预热时间权衡)。 */
-const WARMUP_MAX_BYTES = 80 * 1024 * 1024;
 
 // 递归扫描:只收 .mdx/.mdd,跳过 macOS 拷贝残留的 ._ 元数据文件。
 function scanDir(dir: string): string[] {
@@ -55,27 +53,31 @@ class DictManager {
   private scanned = false;
   private warmupStarted = false;
 
-  /** 扫描目录并返回词典列表(不 open);首次扫描后触发后台温和预热。 */
+  /** 扫描目录并返回词典列表(不 open);首次请求时兜底触发全量加载。 */
   list(): DictEntry[] {
-    if (!this.scanned) {
-      this.scanned = true;
-      if (!fs.existsSync(DEFAULT_DIR)) {
-        this.entries = [];
-        return this.entries;
-      }
-      this.entries = scanDir(DEFAULT_DIR).map((p, i) => {
-        const e: DictEntry = {
-          id: i,
-          path: p,
-          name: path.basename(p),
-          info: null,
-          error: null,
-        };
-        return e;
-      });
-      for (const e of this.entries) this.entryById.set(e.id, e);
-      this.scheduleWarmup();
+    this.startWarmup(); // 幂等:instrumentation 未触发时,首次请求兜底
+    return this.scan();
+  }
+
+  /** 扫描一次目录并填充条目(幂等,纯文件系统遍历)。 */
+  private scan(): DictEntry[] {
+    if (this.scanned) return this.entries;
+    this.scanned = true;
+    if (!fs.existsSync(DEFAULT_DIR)) {
+      this.entries = [];
+      return this.entries;
     }
+    this.entries = scanDir(DEFAULT_DIR).map((p, i) => {
+      const e: DictEntry = {
+        id: i,
+        path: p,
+        name: path.basename(p),
+        info: null,
+        error: null,
+      };
+      return e;
+    });
+    for (const e of this.entries) this.entryById.set(e.id, e);
     return this.entries;
   }
 
@@ -118,29 +120,23 @@ class DictManager {
   }
 
   /**
-   * 后台温和预热:list() 首次扫描后,分批(间隔 10ms)open 中小 MDX,
-   * 让首次查询大部分词典直接命中句柄缓存。跳过:已失败、MDD、超过
-   * 80MB 的大文件(内存与预热时间权衡,超大词典仍惰性首查)。
-   * open 为同步 C 调用,失败静默(记入 entry.error,后续查询不再尝试)。
+   * 启动全量后台加载:分批(间隔 10ms)open 全部词典(含 MDD),
+   * 让首次查询直接命中句柄缓存。open 为同步 C 调用,失败静默
+   * (记入 entry.error,后续查询不再尝试)。幂等,可反复调用。
    */
-  private scheduleWarmup(): void {
-    if (this.warmupStarted || this.entries.length === 0) return;
+  startWarmup(): void {
+    if (this.warmupStarted) return;
+    const entries = this.scan();
+    if (entries.length === 0) return;
     this.warmupStarted = true;
-    const queue = this.entries.filter((e) => {
-      if (e.error || MDD_EXT_RE.test(e.path)) return false;
-      try {
-        return fs.statSync(e.path).size <= WARMUP_MAX_BYTES;
-      } catch {
-        return false;
-      }
-    });
+    const queue = [...entries];
     const step = () => {
       const e = queue.shift();
       if (!e) return;
       this.get(e.id);
       setTimeout(step, 10);
     };
-    // 先让首个列表请求返回,再开始预热
+    // 先让进程启动/首个列表请求返回,再开始加载
     setTimeout(step, 50);
   }
 }
@@ -148,6 +144,9 @@ class DictManager {
 // Next.js dev 热重载会重新执行模块,用 globalThis 保存进程级单例。
 const g = globalThis as unknown as { __mdictManager?: DictManager };
 export function getManager(): DictManager {
-  if (!g.__mdictManager) g.__mdictManager = new DictManager();
+  if (!g.__mdictManager) {
+    g.__mdictManager = new DictManager();
+    g.__mdictManager.startWarmup(); // 构造即全量加载
+  }
   return g.__mdictManager;
 }

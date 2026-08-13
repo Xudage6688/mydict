@@ -63,9 +63,8 @@ export function useHistory() {
 export function useLookup(record: (w: string) => void) {
   const [results, setResults] = useState<LookupItem[]>([]);
   const [loading, setLoading] = useState(false);
-  // 最后提交查询的词:仅当输入与它一致时才判定"未命中"(输入过程中的
-  // 中间字符串不触发 MissPanel)
-  const [searched, setSearched] = useState("");
+  // 最近一次实际发起查询的词:用于区分"输入中"与"已查询"(miss 判定)
+  const [lastWord, setLastWord] = useState("");
   // 请求序号:只接受最后一次查询的响应,慢的过期响应直接丢弃
   const seq = useRef(0);
 
@@ -73,7 +72,7 @@ export function useLookup(record: (w: string) => void) {
     (word: string) => {
       const w = word.trim();
       if (!w) return;
-      setSearched(w);
+      setLastWord(w);
       // 同步 URL(?q=词):浏览器后退/前进可在不同查询间切换
       const cur = new URL(window.location.href).searchParams.get("q") ?? "";
       if (cur === w) {
@@ -103,14 +102,14 @@ export function useLookup(record: (w: string) => void) {
     seq.current += 1; // 使在途查询响应作废,避免覆盖清空后的结果
     setLoading(false); // 在途响应的 finally 已被序号守卫跳过,这里负责复位
     setResults([]);
-    setSearched("");
+    setLastWord(""); // 未查询任何词时不应显示 miss
   }, []);
-  return { results, loading, lookup, clear, searched };
+  return { results, loading, lookup, clear, lastWord };
 }
 
 // ---- 输入联想:防抖 + 过期请求取消 ----
 
-export function useSuggestions(sugDict: number) {
+export function useSuggestions() {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [activeSug, setActiveSug] = useState(-1);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -122,14 +121,15 @@ export function useSuggestions(sugDict: number) {
       setActiveSug(-1);
       if (timer.current) clearTimeout(timer.current);
       abort.current?.abort();
-      if (v.trim().length === 0 || sugDict < 0) {
+      if (v.trim().length === 0) {
         setSuggestions([]);
         return;
       }
       timer.current = setTimeout(() => {
         const ctrl = new AbortController();
         abort.current = ctrl;
-        fetchSuggest(sugDict, v.trim(), SUGGEST_LIMIT, ctrl.signal)
+        // dict=-1:服务端聚合全部词典,避免单本词典无匹配导致下拉为空
+        fetchSuggest(-1, v.trim(), SUGGEST_LIMIT, ctrl.signal)
           .then((j) => {
             if (!ctrl.signal.aborted) {
               // Set 去重防御词典含重复 key
@@ -141,7 +141,7 @@ export function useSuggestions(sugDict: number) {
           });
       }, SUGGEST_DEBOUNCE_MS);
     },
-    [sugDict],
+    [],
   );
 
   const hide = useCallback(() => {

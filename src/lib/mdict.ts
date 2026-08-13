@@ -6,6 +6,7 @@
 //   - 错误不抛异常:open 失败通过 errbuf 回填;lookup/suggest 失败返回 null/空
 import koffi from "koffi";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { DictInfo } from "./shared";
 
@@ -19,6 +20,15 @@ export function mdictLibPath(): string {
   if (fs.existsSync(vendored)) return vendored;
   // 兜底:与 mdictcc 源码工程平级的构建产物(../mdictcc/build)
   return path.join(process.cwd(), "..", "mdictcc", "build", name);
+}
+
+// 引擎索引缓存目录(集中式,对齐 goldendict 思路):索引写入 <dir>/<md5hex>,
+// 词典目录零写入。默认用户缓存目录,可用环境变量 MDICT_INDEX_DIR 覆盖。
+// 注:当前 vendored 引擎本机未导出 mdict_set_index_dir(旧版构建),
+// 该目录暂仅供 user-css 存储定位(见 user-css.ts),索引缓存未启用。
+export function indexDirPath(): string {
+  if (process.env.MDICT_INDEX_DIR) return process.env.MDICT_INDEX_DIR;
+  return path.join(os.homedir(), ".mdictfe", "index");
 }
 
 type Lib = ReturnType<typeof koffi.load>;

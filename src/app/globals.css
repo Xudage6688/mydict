@@ -57,6 +57,65 @@
   display: none;              /* Chrome/Safari/Edge */
 }
 
+/* 自定义样式编辑器(@uiw/react-textarea-code-editor):
+   外观 + 配色。库自带主题用 prefers-color-scheme(跟随系统主题),
+   这里以更高优先级选择器覆盖其配色 CSS 变量,改由项目 .dark 类驱动。 */
+.css-editor {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  transition:
+    border-color 0.1s ease,
+    box-shadow 0.1s ease;
+}
+.css-editor:focus-within {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.css-editor pre,
+.css-editor textarea {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.css-editor textarea::placeholder {
+  color: var(--muted-foreground);
+  opacity: 1;
+}
+/* 跨浏览器透明:库只对 WebKit 设了 -webkit-text-fill-color 透明,
+   Firefox 等需同时透明 color,否则纯文本会叠在高亮文本上。
+   color 需 !important:库以 style 内联了 color:inherit,普通 CSS 压不住。
+   光标颜色单独保留,避免随文字一起透明。 */
+.css-editor textarea {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  caret-color: var(--foreground);
+}
+/* 覆盖库的 prettylights 配色变量:亮色 */
+div.css-editor {
+  --color-fg-default: var(--foreground);
+  --color-prettylights-syntax-comment: #6a737d;
+  --color-prettylights-syntax-entity-tag: #22863a;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #57606a;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-string: #a31515;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-markup-bold: #24292f;
+}
+/* 暗色 */
+.dark div.css-editor {
+  --color-fg-default: var(--foreground);
+  --color-prettylights-syntax-comment: #8b949e;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-markup-bold: #c9d1d9;
+}
+
 /* 词条正文排版(MDX 词典 HTML 的通用基线,具体样式由各词典自带 CSS 覆盖) */
 .entry {
   line-height: 1.6;

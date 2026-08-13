@@ -24,7 +24,7 @@ export function fetchSuggest(
   limit = SUGGEST_LIMIT,
   signal?: AbortSignal,
 ): Promise<{ suggestions: string[] }> {
-  // dict < 0 表示不限定词典(服务端回退到第一个可用 MDX)
+  // dict >= 0 限定单本词典;dict < 0 不限定,服务端聚合全部 MDX 词典
   const dictParam = dict >= 0 ? `&dict=${dict}` : "";
   return getJSON(
     `/api/suggest?prefix=${encodeURIComponent(prefix)}&limit=${limit}${dictParam}`,
@@ -38,6 +38,7 @@ export interface DictInfoDetail {
   path: string;
   info: DictInfo | null;
   title: string;
+  titleHtml: string; // 安全 HTML 版标题(供 dangerouslySetInnerHTML)
   cover: string | null;
 }
 
@@ -46,6 +47,25 @@ export function fetchDictInfo(
   signal?: AbortSignal,
 ): Promise<DictInfoDetail> {
   return getJSON(`/api/dict-info?id=${id}`, signal);
+}
+
+// ---- 每词典自定义 CSS ----
+
+export function fetchUserCss(id: number): Promise<{ css: string }> {
+  return getJSON(`/api/user-css?dict=${id}`);
+}
+
+export async function saveUserCss(id: number, css: string): Promise<void> {
+  const r = await fetch(`/api/user-css?dict=${id}`, {
+    method: "PUT",
+    body: css,
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}: save user css`);
+}
+
+export async function clearUserCss(id: number): Promise<void> {
+  const r = await fetch(`/api/user-css?dict=${id}`, { method: "DELETE" });
+  if (!r.ok) throw new Error(`HTTP ${r.status}: clear user css`);
 }
 
 /** 构造资源 URL(路径型,见 html.ts rewriteResources 的说明)。 */

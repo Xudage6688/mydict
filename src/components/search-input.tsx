@@ -1,6 +1,8 @@
 "use client";
 
-// 搜索输入框 + 联想下拉(键盘导航:Enter 查询、↑↓ 移动、Esc 关闭)。
+// 搜索输入框 + 联想下拉(键盘导航:Enter 查询、↑↓ 移动、Esc 关闭;
+// 点击下拉外部自动收起)。
+import { useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { AnimatedContent } from "@/components/ui/animated-content";
 
@@ -21,8 +23,21 @@ export default function SearchInput({
   onLookup: (w: string) => void;
   onHide: () => void;
 }) {
+  // 容器引用:用于“点击外部收起下拉”的命中判定。
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 用 mousedown(而非 click):与下拉项的 onMouseDown 同一事件时机,
+    // 避免点击下拉项先触发这里导致 blur/隐藏竞态。
+    const onDocMouseDown = (e: MouseEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) onHide();
+    };
+    document.addEventListener("mousedown", onDocMouseDown);
+    return () => document.removeEventListener("mousedown", onDocMouseDown);
+  }, [onHide]);
+
   return (
-    <div className="relative">
+    <div ref={wrapRef} className="relative">
       <Input
         value={query}
         onChange={(e) => onQuery(e.target.value)}
