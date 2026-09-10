@@ -1,3 +1,5 @@
+![mdictfe screenshot](public/screenshot.jpg)
+
 # mdictfe
 
 基于 Next.js(App Router + TypeScript + Tailwind)的 MDX/MDD 词典查询应用。
@@ -29,7 +31,7 @@
 
 ```bash
 npm install
-npm run dev        # 开发模式 http://localhost:3000
+npm run dev        # 开发模式 http://localhost:7777
 # 或
 npm run build && npm run start   # 生产模式
 ```
@@ -100,7 +102,7 @@ NODE_OPTIONS="--max-old-space-size=2048 --expose-gc" npm run start
 - `--max-old-space-size` 把 V8 堆封顶,避免长期运行无限膨胀
 - GC 端点**默认禁用**:设置环境变量 `MDICT_GC_TOKEN` 后,请求须带
   `x-gc-token: <token>` 头(shell 下:`curl -X POST -H "x-gc-token: <token>" \
-  http://localhost:3000/api/dicts/gc`);未配置 token 一律返回 403。
+    http://localhost:7777/api/dicts/gc`);未配置 token 一律返回 403。
   它关闭全部词典句柄并触发 GC,句柄随后按需惰性重开,属自愈操作
 - 可配定时任务每 6 小时调用一次,顺带记录 `process.memoryUsage()` 观察趋势
 
