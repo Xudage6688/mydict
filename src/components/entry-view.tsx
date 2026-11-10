@@ -78,7 +78,16 @@ export default function EntryView({
   useEffect(() => {
     navRef.current = onNavigate;
   });
+  // 最新 userCss:html 重建 effect 需要读取它回填样式,但不能把它列入
+  // 依赖(否则改样式又会触发整体重建),故同 navRef 一样走 ref。
+  const userCssRef = useRef(userCss);
+  useEffect(() => {
+    userCssRef.current = userCss;
+  });
 
+  // 词条内容重建:html 变化时整体重建 shadow 内容并重绑事件。
+  // userCss 不在依赖里 —— 样式变化由下方独立 effect 只替换 <style> 元素,
+  // 避免大词条 HTML 因改样式被整体重建(重新 parse + 重绑监听)。
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
@@ -87,17 +96,21 @@ export default function EntryView({
     if (!shadow) shadow = host.attachShadow({ mode: "open" });
     shadow.replaceChildren();
     const style = document.createElement("style");
+    style.dataset.kind = "base";
     style.textContent = BASE_CSS;
     shadow.append(style);
     // 服务端已消毒(移除 <script>/事件属性);innerHTML 组装 shadow 内容
     const body = document.createElement("div");
     body.innerHTML = html;
     shadow.append(body);
-    // 用户自定义 CSS:追加在 BASE_CSS 之后(先于词典自带 <link> 样式插入
-    // shadow 的顺序无妨——用户样式最后声明,同特异性覆盖)。
-    if (userCss.trim()) {
+
+    // 回填用户自定义 CSS(replaceChildren 已将其随旧节点删除;
+    // [userCss] effect 仅在值变化时运行,html 重建后不会重跑)。
+    const css = userCssRef.current;
+    if (css.trim()) {
       const userStyle = document.createElement("style");
-      userStyle.textContent = userCss;
+      userStyle.dataset.kind = "user";
+      userStyle.textContent = css;
       shadow.append(userStyle);
     }
 
@@ -124,7 +137,21 @@ export default function EntryView({
       }
     };
     body.addEventListener("click", onClick);
-  }, [html, userCss]);
+  }, [html]);
+
+  // 用户自定义 CSS:插入在 BASE_CSS 之后(词典自带 <link> 样式之前;
+  // 用户样式最后声明,同特异性覆盖)。变化时只增删/替换这一个 <style>,
+  // 不触碰词条内容。
+  useEffect(() => {
+    const shadow = hostRef.current?.shadowRoot;
+    if (!shadow) return;
+    shadow.querySelector("style[data-kind=user]")?.remove();
+    if (!userCss.trim()) return;
+    const userStyle = document.createElement("style");
+    userStyle.dataset.kind = "user";
+    userStyle.textContent = userCss;
+    shadow.append(userStyle);
+  }, [userCss]);
 
   return <div ref={hostRef} className="entry" />;
 }

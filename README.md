@@ -103,8 +103,8 @@ NODE_OPTIONS="--max-old-space-size=2048 --expose-gc" npm run start
 - GC 端点**默认禁用**:设置环境变量 `MDICT_GC_TOKEN` 后,请求须带
   `x-gc-token: <token>` 头(shell 下:`curl -X POST -H "x-gc-token: <token>" \
     http://localhost:7777/api/dicts/gc`);未配置 token 一律返回 403。
-  它关闭全部词典句柄并触发 GC,句柄随后按需惰性重开,属自愈操作
-- 可配定时任务每 6 小时调用一次,顺带记录 `process.memoryUsage()` 观察趋势
+  它关闭全部词典句柄并清空词条/资源缓存,随后触发 GC;句柄与缓存按需惰性重建,
+  属自愈操作
 
 实测(12 本词典,含 1.3GB LDOCE6,冷启动进程):全量打开后工作集约 134MB,
 GC 后约 96MB。此为冷启动数字,与旧版长跑 20h 后观测到的 1.36GB 基线的差异

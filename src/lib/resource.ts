@@ -89,6 +89,14 @@ function mddCacheSet(key: string, v: Uint8Array): void {
   }
 }
 
+/** 清空 MDD 与磁盘资源缓存(供 GC 端点释放缓存内存;句柄随后惰性重开)。 */
+export function clearResourceCaches(): void {
+  mddCache.clear();
+  mddCacheBytes = 0;
+  diskCache.clear();
+  diskCacheBytes = 0;
+}
+
 /** 依次尝试 MDD 候选,返回首个命中的字节(带缓存);全未命中返回 null。 */
 export function resolveResource(
   dictId: number,

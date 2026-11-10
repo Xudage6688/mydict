@@ -414,8 +414,6 @@ export default function DictModal({
                 <dd>{detail.info.compact ? "是" : "否"}</dd>
                 <dt className="text-muted-foreground">词条数</dt>
                 <dd>{detail.info.entries.toLocaleString()}</dd>
-                <dt className="text-muted-foreground">文件</dt>
-                <dd className="break-all text-muted-foreground">{detail.path}</dd>
               </dl>
               {detail.info.description && (
                 <div className="rounded-md border bg-muted/30 p-2 text-xs leading-relaxed">

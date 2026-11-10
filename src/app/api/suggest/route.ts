@@ -27,6 +27,9 @@ export async function GET(req: NextRequest) {
   const out: string[] = [];
   for (const e of mgr.list()) {
     if (!MDX_EXT_RE.test(e.path)) continue;
+    // 每本之间让出事件循环(原因见 lookup 路由:同步 C 调用防阻塞)。
+    // (executor 形式:兼容 Node 18,Promise.withResolvers 需 ≥22)
+    await new Promise<void>((resolve) => setImmediate(resolve));
     const d: MdictDict | null = mgr.get(e.id);
     if (!d) continue;
     for (const s of d.suggest(prefix, limit)) {

@@ -26,11 +26,9 @@ export async function GET(req: NextRequest) {
   const d = mgr.get(id);
   const entry = mgr.list().find((e) => e.id === id);
   if (!d || !entry) return new Response("dict unavailable", { status: 404 });
-
   return Response.json({
     id,
     name: entry.name,
-    path: entry.path,
     info: d.info(),
     title: dictDisplayName(d.info().title ?? "", entry.name),
     titleHtml: titleHtml(d.info().title ?? "", entry.name),

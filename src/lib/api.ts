@@ -35,7 +35,6 @@ export function fetchSuggest(
 export interface DictInfoDetail {
   id: number;
   name: string;
-  path: string;
   info: DictInfo | null;
   title: string;
   titleHtml: string; // 安全 HTML 版标题(供 dangerouslySetInnerHTML)
